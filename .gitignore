@@ -1,9 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Local env files
+*.local
+
 # Claude Code local files
 .claude/settings.local.json
 .claude/agent-memory-local/
+.claude/plans/
 
 # IDE
 .idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # OS
 Thumbs.db

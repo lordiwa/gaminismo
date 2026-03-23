@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Portafolio Urbano</title>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0e0e0e;
+color:white;
+overflow-x:hidden;
+}
+
+/* ESCENA PRINCIPAL */
+
+.street{
+position:relative;
+height:100vh;
+display:flex;
+align-items:center;
+}
+
+/* POSTE A LA IZQUIERDA */
+
+.poste{
+position:absolute;
+left:6%;
+top:18%;
+z-index:3;
+}
+
+.poste img{
+height:420px;
+}
+
+/* LUZ DEL POSTE */
+
+.lightGlow{
+position:absolute;
+left:4%;
+top:12%;
+width:300px;
+height:300px;
+background:radial-gradient(circle,rgba(255,255,180,0.25),transparent);
+filter:blur(20px);
+}
+
+/* CARTELERIA */
+
+.infoSide{
+position:absolute;
+left:22%;
+top:15%;
+width:300px;
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.cartel{
+background:#1c1c1c;
+border-left:5px solid #888;
+padding:14px;
+transform:translateX(-120px);
+opacity:0;
+transition:0.8s;
+}
+
+.cartel.visible{
+transform:translateX(0);
+opacity:1;
+}
+
+/* ACTIVIDAD LUDICA (MAS ABAJO) */
+
+.funSide{
+position:absolute;
+right:12%;
+top:45%;
+width:320px;
+text-align:center;
+}
+
+/* FACE BUILDER */
+
+.faceCanvas{
+width:280px;
+height:280px;
+border:2px dashed #555;
+margin:auto;
+margin-top:15px;
+position:relative;
+background:#151515;
+}
+
+.faceCanvas img{
+position:absolute;
+width:60px;
+}
+
+/* PARTES */
+
+.parts img{
+width:60px;
+margin:8px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.parts img:hover{
+transform:scale(1.2);
+}
+
+/* PROPS ORDENADOS */
+
+.props{
+position:absolute;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+
+.prop{
+position:absolute;
+font-size:28px;
+opacity:0.6;
+}
+
+/* UBICACIONES */
+
+.p1{top:10%; left:40%;}
+.p2{top:20%; right:10%;}
+.p3{top:60%; left:8%;}
+.p4{bottom:20%; right:25%;}
+.p5{bottom:10%; left:35%;}
+.p6{top:40%; right:40%;}
+
+/* BOTON MUSICA */
+
+.music{
+position:fixed;
+top:20px;
+left:20px;
+background:#222;
+border:none;
+color:white;
+padding:10px 15px;
+cursor:pointer;
+}
+
+/* CONTACTO */
+
+.contact{
+height:300px;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:#050505;
+}
+
+.trash{
+font-size:90px;
+cursor:pointer;
+}
+
+.contactBox{
+background:#1f1f1f;
+padding:20px;
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<button class="music" @click="toggleMusic">
+{{ musicPlaying ? "🔇 Pausar" : "🎵 Música" }}
+</button>
+
+<audio ref="music" loop>
+<source src="assets/music.mp3">
+</audio>
+
+<div class="street">
+
+<div class="lightGlow"></div>
+
+<!-- POSTE -->
+
+<div class="poste">
+<img src="assets/poste.png">
+</div>
+
+<!-- CARTELERIA -->
+
+<div class="infoSide">
+
+<div class="cartel" :class="{visible:showInfo}">
+<h3>Sobre mí</h3>
+<p>Texto de ejemplo que luego será reemplazado.</p>
+</div>
+
+<div class="cartel" :class="{visible:showInfo}">
+<h3>Carrera</h3>
+<p>Información temporal de demostración.</p>
+</div>
+
+<div class="cartel" :class="{visible:showInfo}">
+<h3>Proyectos</h3>
+<p>Descripción breve de proyectos futuros.</p>
+</div>
+
+<div class="cartel" :class="{visible:showInfo}">
+<h3>Habilidades</h3>
+<p>HTML, CSS, JavaScript, Vue.</p>
+</div>
+
+<div class="cartel" :class="{visible:showInfo}">
+<h3>Experiencia</h3>
+<p>Contenido de demostración.</p>
+</div>
+
+</div>
+
+<!-- PROPS -->
+
+<div class="props">
+
+<span class="prop p1">🎨</span>
+<span class="prop p2">📄</span>
+<span class="prop p3">🧃</span>
+<span class="prop p4">🧱</span>
+<span class="prop p5">🎧</span>
+<span class="prop p6">📦</span>
+
+</div>
+
+<!-- ACTIVIDAD LUDICA -->
+
+<div class="funSide">
+
+<h3>Crea un rostro</h3>
+
+<div class="faceCanvas">
+
+<img
+v-for="(part,index) in faceParts"
+:key="index"
+:src="part.src"
+:style="{left:part.x+'px', top:part.y+'px'}"
+/>
+
+</div>
+
+<div class="parts">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Eye.png"
+@click="addPart($event)">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Nose.png"
+@click="addPart($event)">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Mouth.png"
+@click="addPart($event)">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTACTO -->
+
+<div class="contact">
+
+<div class="trash" @click="showContact=!showContact">
+🗑
+</div>
+
+<div v-if="showContact" class="contactBox">
+<p>Email: ejemplo@email.com</p>
+<p>Instagram: @portfolio</p>
+<p>Github: github.com/portfolio</p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const {createApp}=Vue
+
+createApp({
+
+data(){
+return{
+musicPlaying:false,
+showContact:false,
+showInfo:false,
+faceParts:[]
+}
+},
+
+mounted(){
+
+setTimeout(()=>{
+this.showInfo=true
+},600)
+
+},
+
+methods:{
+
+toggleMusic(){
+
+const music=this.$refs.music
+
+if(this.musicPlaying){
+music.pause()
+}else{
+music.play()
+}
+
+this.musicPlaying=!this.musicPlaying
+},
+
+addPart(e){
+
+this.faceParts.push({
+src:e.target.src,
+x:Math.random()*200,
+y:Math.random()*200
+})
+
+}
+
+}
+
+}).mount("#app")
+
+</script>
+
+</body>
+</html>

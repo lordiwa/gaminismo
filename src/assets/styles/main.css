@@ -1,0 +1,25 @@
+:root {
+  --bg-dark: #0e0e0e;
+  --bg-card: #1c1c1c;
+  --bg-contact: #050505;
+  --bg-face-canvas: #151515;
+  --text-primary: #ffffff;
+  --text-muted: #aaaaaa;
+  --accent-border: #888888;
+  --glow-color: rgba(255, 255, 180, 0.25);
+  --glow-blur: 20px;
+  --transition-speed: 0.8s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
