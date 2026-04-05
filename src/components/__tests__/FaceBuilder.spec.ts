@@ -134,8 +134,8 @@ describe('FaceBuilder', () => {
 
   it('buildCompositeSvg generates valid SVG with positioned parts', () => {
     const parts = [
-      { id: 'eye-01', category: 'eye', svg: '<circle cx="30" cy="30" r="5"/>', x: 50, y: 60, instanceId: 1 },
-      { id: 'mouth-01', category: 'mouth', svg: '<path d="M0 0"/>', x: 100, y: 120, instanceId: 2 },
+      { id: 'eye-01', category: 'eye', svg: '<circle cx="30" cy="30" r="5"/>', x: 50, y: 60, instanceId: 1, scale: 1 },
+      { id: 'mouth-01', category: 'mouth', svg: '<path d="M0 0"/>', x: 100, y: 120, instanceId: 2, scale: 1 },
     ]
 
     const result = buildCompositeSvg(parts, 280, 280)
