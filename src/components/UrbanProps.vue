@@ -27,6 +27,21 @@ import { urbanProps } from '@/data/portfolio'
   position: absolute;
   font-size: 28px;
   opacity: 0.6;
+  filter: drop-shadow(0 0 6px rgba(255, 0, 255, 0.4));
+  animation: star-twinkle 2s ease-in-out infinite;
+}
+
+.prop:nth-child(2n) {
+  animation-delay: 0.7s;
+}
+
+.prop:nth-child(3n) {
+  animation-delay: 1.4s;
+}
+
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
 }
 
 .p1 { top: 10%; left: 40%; }

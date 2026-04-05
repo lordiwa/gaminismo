@@ -8,59 +8,53 @@ export interface PlacedPart extends FacePartDefinition {
   x: number
   y: number
   instanceId: number
+  scale: number
 }
 
 export const CATEGORIES = ['eye', 'nose', 'mouth', 'ear', 'hair', 'glasses', 'beard'] as const
 
 export const FACE_PARTS_CATALOG: FacePartDefinition[] = [
-  // Eyes
-  {
-    id: 'eye-01',
-    category: 'eye',
-    svg: '<ellipse cx="30" cy="30" rx="18" ry="12" fill="white" stroke="#333" stroke-width="2"/><circle cx="30" cy="30" r="7" fill="#444"/><circle cx="30" cy="30" r="3" fill="black"/>',
-  },
-  {
-    id: 'eye-02',
-    category: 'eye',
-    svg: '<ellipse cx="30" cy="30" rx="15" ry="10" fill="white" stroke="#333" stroke-width="2"/><circle cx="33" cy="30" r="6" fill="#2a6" /><circle cx="33" cy="30" r="2.5" fill="black"/>',
-  },
-  {
-    id: 'eye-03',
-    category: 'eye',
-    svg: '<path d="M12 30 Q30 18 48 30 Q30 42 12 30Z" fill="white" stroke="#333" stroke-width="2"/><circle cx="30" cy="30" r="8" fill="#48f"/><circle cx="30" cy="30" r="3" fill="black"/>',
-  },
-  // Noses
-  {
-    id: 'nose-01',
-    category: 'nose',
-    svg: '<path d="M30 15 Q38 35 33 45 Q30 47 27 45 Q22 35 30 15Z" fill="#cba" stroke="#999" stroke-width="1"/>',
-  },
-  {
-    id: 'nose-02',
-    category: 'nose',
-    svg: '<circle cx="30" cy="35" r="8" fill="#cba" stroke="#999" stroke-width="1"/><circle cx="26" cy="37" r="2.5" fill="#a98"/><circle cx="34" cy="37" r="2.5" fill="#a98"/>',
-  },
-  {
-    id: 'nose-03',
-    category: 'nose',
-    svg: '<path d="M30 12 L35 40 Q30 44 25 40Z" fill="#cba" stroke="#999" stroke-width="1"/>',
-  },
-  // Mouths
-  {
-    id: 'mouth-01',
-    category: 'mouth',
-    svg: '<path d="M15 30 Q30 50 45 30" stroke="#c44" stroke-width="3" fill="none"/><path d="M18 30 Q30 45 42 30" fill="#c44" opacity="0.3"/>',
-  },
-  {
-    id: 'mouth-02',
-    category: 'mouth',
-    svg: '<ellipse cx="30" cy="35" rx="14" ry="8" fill="#c44"/><ellipse cx="30" cy="32" rx="10" ry="4" fill="white"/>',
-  },
-  {
-    id: 'mouth-03',
-    category: 'mouth',
-    svg: '<path d="M18 32 Q30 28 42 32" stroke="#a33" stroke-width="2.5" fill="none"/>',
-  },
+  // Eyes (PNG images from /ojos/)
+  { id: 'eye-01', category: 'eye', svg: '<image href="/ojos/1.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-02', category: 'eye', svg: '<image href="/ojos/2.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-03', category: 'eye', svg: '<image href="/ojos/3.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-04', category: 'eye', svg: '<image href="/ojos/4.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-05', category: 'eye', svg: '<image href="/ojos/5.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-06', category: 'eye', svg: '<image href="/ojos/6.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-07', category: 'eye', svg: '<image href="/ojos/7.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-08', category: 'eye', svg: '<image href="/ojos/8.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-09', category: 'eye', svg: '<image href="/ojos/9.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-10', category: 'eye', svg: '<image href="/ojos/10.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-11', category: 'eye', svg: '<image href="/ojos/11.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-12', category: 'eye', svg: '<image href="/ojos/12.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-13', category: 'eye', svg: '<image href="/ojos/13.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-14', category: 'eye', svg: '<image href="/ojos/14.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-15', category: 'eye', svg: '<image href="/ojos/15.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-16', category: 'eye', svg: '<image href="/ojos/16.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-17', category: 'eye', svg: '<image href="/ojos/17.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'eye-18', category: 'eye', svg: '<image href="/ojos/18.png" x="0" y="0" width="60" height="60"/>' },
+  // Noses (PNG images from /narices/)
+  { id: 'nose-01', category: 'nose', svg: '<image href="/narices/1.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'nose-02', category: 'nose', svg: '<image href="/narices/2.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'nose-03', category: 'nose', svg: '<image href="/narices/3.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'nose-04', category: 'nose', svg: '<image href="/narices/4.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'nose-05', category: 'nose', svg: '<image href="/narices/5.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'nose-06', category: 'nose', svg: '<image href="/narices/6.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'nose-07', category: 'nose', svg: '<image href="/narices/7.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'nose-08', category: 'nose', svg: '<image href="/narices/8.png" x="0" y="0" width="60" height="60"/>' },
+  // Mouths (PNG images from /bocas/)
+  { id: 'mouth-01', category: 'mouth', svg: '<image href="/bocas/1.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-02', category: 'mouth', svg: '<image href="/bocas/2.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-03', category: 'mouth', svg: '<image href="/bocas/3.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-04', category: 'mouth', svg: '<image href="/bocas/4.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-05', category: 'mouth', svg: '<image href="/bocas/5.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-06', category: 'mouth', svg: '<image href="/bocas/6.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-07', category: 'mouth', svg: '<image href="/bocas/7.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-08', category: 'mouth', svg: '<image href="/bocas/8.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-09', category: 'mouth', svg: '<image href="/bocas/9.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-10', category: 'mouth', svg: '<image href="/bocas/10.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-11', category: 'mouth', svg: '<image href="/bocas/11.png" x="0" y="0" width="60" height="60"/>' },
+  { id: 'mouth-12', category: 'mouth', svg: '<image href="/bocas/12.png" x="0" y="0" width="60" height="60"/>' },
   // Ears
   {
     id: 'ear-01',

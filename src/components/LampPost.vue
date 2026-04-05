@@ -1,10 +1,6 @@
 <template>
   <div class="poste">
-    <svg width="40" height="420" viewBox="0 0 40 420" class="poste-svg">
-      <rect x="16" y="60" width="8" height="360" fill="#555" />
-      <ellipse cx="20" cy="50" rx="18" ry="10" fill="#777" />
-      <circle cx="20" cy="40" r="8" fill="#ffeb8a" opacity="0.9" />
-    </svg>
+    <img src="@/assets/poste.png" alt="Poste de luz" class="poste-img" />
   </div>
   <div class="light-glow"></div>
 </template>
@@ -12,22 +8,34 @@
 <style scoped>
 .poste {
   position: absolute;
-  left: 6%;
-  top: 18%;
+  left: -30%;
+  top: 0;
   z-index: 3;
+  overflow: hidden;
 }
 
-.poste-svg {
-  height: 420px;
+.poste-img {
+  height: calc(115vh * 0.85);
+  width: auto;
+  image-rendering: pixelated;
+  transform: scale(1.18);
+  transform-origin: top left;
 }
 
 .light-glow {
   position: absolute;
-  left: 4%;
-  top: 12%;
+  left: 6%;
+  top: 2%;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, var(--glow-color, rgba(255, 255, 180, 0.25)), transparent);
-  filter: blur(var(--glow-blur, 20px));
+  background: radial-gradient(circle, var(--glow-color, rgba(0, 255, 65, 0.3)), rgba(255, 0, 255, 0.05), transparent);
+  filter: blur(var(--glow-blur, 25px));
+  pointer-events: none;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }
 </style>
